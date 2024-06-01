@@ -18,7 +18,7 @@
                 "Entrypoint": [
                     "node", "entrypoint.js"
                 ],
-                "Image": "arthh/projectsmith:v0",  // Update with your actual Docker image
+                "Image": "leofranklin1509/projectsmith:latest",  // Update with your actual Docker image
                 "EnvironmentVariables": [
                     "PROMPT={{.PROMPT}}"
                 ]
