@@ -16,7 +16,7 @@
             },
             "Docker": {
                 "Entrypoint": [
-                    "node", "entrypoint.js"
+                    "node entrypoint.js"
                 ],
                 "Image": "leofranklin1509/projectsmith:latest",  // Update with your actual Docker image
                 "EnvironmentVariables": [
