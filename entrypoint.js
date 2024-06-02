@@ -52,7 +52,7 @@ async function main() {
       for (let message of newMessages) {
         if (message.role === 'assistant') {
           console.log(message.content);
-          allMessages.push(message);
+          allMessages.push(message.content);
         }
       }
     }
@@ -98,7 +98,10 @@ async function getNewMessages(contract, agentRunID, currentMessagesCount) {
   const newMessages = [];
   messages.forEach((message, i) => {
     if (i >= currentMessagesCount) {
-      newMessages.push(messages[i]);
+      newMessages.push({
+        role: roles[i],
+        content: messages[i],
+      });
     }
   });
   return newMessages;
