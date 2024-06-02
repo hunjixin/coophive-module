@@ -66,13 +66,15 @@ async function main() {
     }
   }
 
-  console.log(allMessages);
-  await fs.writeFile(
-    './outputs/response.json',
-    JSON.stringify(allMessages, null, 2),
-    'utf-8'
-  );
-  console.log('File has been saved successfully.');
+  if (allMessages.length) {
+    console.log('Start of reply -  ', allMessages, ' - end of reply');
+    await fs.writeFile(
+      './outputs/response.json',
+      JSON.stringify(allMessages, null, 2),
+      'utf-8'
+    );
+    console.log('File has been saved successfully.');
+  }
 }
 
 function getAgentRunId(receipt, contract) {
@@ -81,12 +83,9 @@ function getAgentRunId(receipt, contract) {
     try {
       const parsedLog = contract.interface.parseLog(log);
       if (parsedLog && parsedLog.name === 'AgentRunCreated') {
-        // Second event argument
         agentRunID = ethers.toNumber(parsedLog.args[1]);
       }
-    } catch (error) {
-      // This log might not have been from your contract, or it might be an anonymous log
-    }
+    } catch (error) {}
   }
   return agentRunID;
 }
