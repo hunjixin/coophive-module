@@ -66,6 +66,7 @@ async function main() {
     }
   }
 
+  console.log('allMessages', allMessages);
   if (allMessages.length) {
     console.log('Start of reply -  ', allMessages, ' - end of reply');
     await fs.writeFile(
