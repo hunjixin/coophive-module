@@ -97,10 +97,7 @@ async function getNewMessages(contract, agentRunID, currentMessagesCount) {
   const newMessages = [];
   messages.forEach((message, i) => {
     if (i >= currentMessagesCount) {
-      newMessages.push({
-        role: roles[i],
-        content: messages[i],
-      });
+      newMessages.push(messages[i]);
     }
   });
   return newMessages;
